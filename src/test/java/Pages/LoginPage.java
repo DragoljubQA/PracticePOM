@@ -10,6 +10,7 @@ public class LoginPage {
     WebElement usernameField;
     WebElement passwordField;
     WebElement submitButton;
+    WebElement error;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -27,16 +28,20 @@ public class LoginPage {
         return driver.findElement(By.id("submit"));
     }
 
-    //-------------------------------
-
-    public void inputUsername() {
-        getUsernameField().clear();
-        getUsernameField().sendKeys("student");
+    public WebElement getError() {
+        return driver.findElement(By.id("error"));
     }
 
-    public void inputPassword() {
+    //-------------------------------
+
+    public void inputUsername(String username) {
+        getUsernameField().clear();
+        getUsernameField().sendKeys(username);
+    }
+
+    public void inputPassword(String password) {
         getPasswordField().clear();
-        getPasswordField().sendKeys("Password123");
+        getPasswordField().sendKeys(password);
     }
 
     public void clickOnSubmitButton() {
